@@ -17,8 +17,8 @@ async function readFileAsync(inputFile) {
         const valueArray = listClass[secKey];
 
         const crn = valueArray[0];
-        let time;
-        let day;
+        let time = 404;
+        let day = "NODAY";
 
         if (valueArray[1]?.[0]?.[0] !== undefined) {
           time = valueArray[1][0][0];
@@ -28,7 +28,7 @@ async function readFileAsync(inputFile) {
         }
 
         returnDictionary[crn] = [course, time, day];
-        console.log(course, sec, crn, time, day);
+        //console.log(course, sec, crn, time, day);
       }
     }
 
