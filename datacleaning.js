@@ -3,6 +3,7 @@ const fs = require('fs');
 async function readFileAsync(inputFile) {
   try {
     const returnDictionary = {};
+    const returnDictionarySec = {};
 
     const data = await fs.promises.readFile(inputFile, 'utf8');
     const jsonData = JSON.parse(data);
@@ -27,12 +28,15 @@ async function readFileAsync(inputFile) {
           day = valueArray[1][0][1];
         }
 
-        returnDictionary[crn] = [course, time, day];
-        //console.log(course, sec, crn, time, day);
+        returnDictionary[crn] = [sec, course, time, day];
+        newDicKey = String(course) + " " + sec 
+        returnDictionarySec[newDicKey] = [crn, time, day];
       }
     }
 
     console.log(returnDictionary);
+    console.log("Other Dictionary")
+    console.log(returnDictionarySec)
   } catch (err) {
     console.error('Error reading or parsing the file:', err);
   }
